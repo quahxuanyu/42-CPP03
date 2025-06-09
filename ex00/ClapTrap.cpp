@@ -6,19 +6,20 @@ void DisplayMessage(std::string message) {
 }
 
 ClapTrap::ClapTrap(): _name("deafult"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-
+    DisplayMessage("ClapTrap default constructor called");
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-
+    DisplayMessage("ClapTrap parameterized constructor called for " + name);
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
+    DisplayMessage("ClapTrap copy constructor called for " + other._name);
     *this = other;
 }
 
 ClapTrap::~ClapTrap() {
-
+    DisplayMessage("ClapTrap destructor called for " + this->_name);
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other) {

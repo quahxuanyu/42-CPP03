@@ -5,7 +5,7 @@ SRC = main.cpp ClapTrap.cpp
 OBJS = $(SRC:.cpp=.o)
 
 # Target executable
-TARGET = claptrap
+TARGET = ClapTrap
 
 # Rules
 all: $(TARGET)
