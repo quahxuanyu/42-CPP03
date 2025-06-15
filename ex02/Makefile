@@ -1,11 +1,12 @@
 CXX = g++
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
-OBJS = $(SRC:.cpp=.o)
+SRC = ClapTrap.cpp FragTrap.cpp ScavTrap.cpp main.cpp
+OBJS_DIR = objs
+OBJS = $(addprefix $(OBJS_DIR)/, $(SRC:.cpp=.o))
 
 # Target executable
-TARGET = FragTrap
+TARGET = frag
 
 # Rules
 all: $(TARGET)
@@ -13,14 +14,15 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS)
 
-%.o: %.cpp
+$(OBJS_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJS_DIR)
 	$(CXX) $(CXX_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -rf $(TARGET)
 
 re: fclean all
 
